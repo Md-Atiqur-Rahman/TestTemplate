@@ -1,0 +1,57 @@
+
+What is attribute help generate a version for static files in Asp.Net Core?
+asp-append-version
+
+What is the interface below helps get the current context?
+
+environment variable in the ASP.NET Core application?
+
+Which of the following is an environment variable in the ASP.NET Core application?
+
+Which of the following extension method allow us to configure custom error handling route?
+By default, static files can be served from __________ folder.
+Middlwares can be configured in ___________ method of Startup class.
+Asp.Net Core has support asynchronous via async/await.
+We should target which of the following for the code-sharing of .NET Core application?
+Every command in .NET Core command line interface starts with _________.
+What is a new feature below is introduced in Asp.Net Core?
+To create logs in ASP.NET Core application, we need to get _________ object from IoC container.
+The _________ method in Startup class is used to registering services with IoC container.
+
+
+ Filter attributes are not support in Asp.Net core, it replaced by Middleware. 						
+  Asp.net Core is not support run in IIS server. It only run on Kestrel server 	
+  
+  How many scopes default support of DI(Dependency Injection) in Asp.Net Core?
+  What is interface help get the current environment of the application? 
+ASP.NET Core applications can target which of the following?  
+Middlewares can be configured using instance of type ____________.
+
+
+Partialview in MVC 4 is not supported in .Net Core?
+ASP.NET Core web application uses __________ as an internal web server by default.
+What methods are used to enable session in ASP.NET Core?
+What is Kestrel in Asp.Net Core?
+Which of the following middleware must be installed to serve static files in ASP.NET Core application?
+Select some ways below to help send many models from the controller to view(.cshtml) in Asp.Net Core
+The Startup class must include _________ method.
+How many ways can help make custom router in Asp.Net Core
+The host for ASP.NET Core web application is configured in _________ file.
+Which of the following is an entry point of ASP.NET Core application?
+How can I invoke a view component in Asp.Net Core?
+Which Helpers are introduced in ASP.NET Core?
+  helper of Asp.Net Framwork in Asp.Net Core?
+  Which of the following is executed on each request in ASP.NET Core application?
+  Which of the following is an entry point of ASP.NET Core application?
+  
+  Return type of Predicate<T>() is always a ______.
+   The dynamic type allows compile time type checking 						
+   Data type of a variable declared using var  will be assigned at _______.
+   
+    A FINALLY block can execute before CATCH block. 						
+	 A return or break statement cannot exit a FINALLY block. 						
+	  A FINALLY block may not execute every time 						
+	   Multiple FINALLY  block is possible. 						
+	   What is the nullable type in C#?
+	   The partial class allows ________.
+	   Which of the following is true for ReadOnly  variables?

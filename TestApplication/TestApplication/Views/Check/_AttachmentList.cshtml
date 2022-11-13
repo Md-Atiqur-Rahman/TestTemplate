@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TestSelise.Models.Models.DocumentInfoVM>
+@{
+    Layout = null;
+    int i = 0;
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sl No</th>
+            <th>File Name</th>
+            <th style="width:80px;">ডাউনলোড</th>
+            <th>Action</th>
+        </tr>
+
+        <tr>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        i++;
+<tbody>
+    <tr>
+        <td class="text-center">
+            @i
+        </td>
+        <td>
+            @if (item.OrgFileName == null)
+            {
+                @Html.DisplayFor(modelItem => item.FileName)
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.OrgFileName)
+            }
+        </td>
+        <td class="text-center">
+            @Html.ActionLink("Download", "DownloadFile", new { fileLocation= item.FileLocation,fileName = item.FileName })
+            </td>
+        <td class="text-center">
+            <button type="button" class="btn btn-primary save-button-validation" onclick="removeAttachment('@item.FileName')">Delete</button>
+        </td>
+    </tr>
+</tbody>
+}
+
+</table>

@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @using Microsoft.AspNetCore.Http
+    @inject IHttpContextAccessor Accessor
+    @{
+        var Email = @Accessor.HttpContext.Session.GetString("UserEmail");
+    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestApplication</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><span class="glyphicon-italic">Test Application</span></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Check" asp-action="IndexChild">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+
+                        @if (@Accessor.HttpContext.Session.GetString("UserEmail") != null)
+                        {
+
+                            <li class="nav-item dropdown pull-right br">
+                                <a class="dropdown-toggle custom-logout margin-layout-userlogo LogoBtn" href="#" data-toggle="dropdown" style="padding: 5px 5px 5px 5px !important;">
+                                    <img src="" alt="SignOut" class="navbar-logo" style="" />
+                                </a>
+                                <ul class="dropdown-menu pull-right logoutBtn box-shadow min-width-250px" style="margin-top:5px !important;">
+                                    <li class="col-xs-12 padding-all-5 pull-left"><i class="fa-icon-setup col-xs-2 no-padding pull-left"></i> @Accessor.HttpContext.Session.GetString("UserEmail")</li>
+                                    <li class="seperaor-li divider col-md-12 color-gray" style="margin:0 !important"></li>
+                                    <li class="col-xs-12 padding-all-5 pull-left"><a href="/LogGate/Logout" class="col-xs-12 no-padding signout-btn"><i class="fa-icon-setup fa fa-sign-out col-xs-2 no-padding pull-left"></i> Logout</a></li>
+                                </ul>
+                            </li>
+
+                        }
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - TestApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/sweetalert-helper.js"></script>
+    <script src="~/js/sweetalert2.js"></script>
+
+    <script src="~/js/commonjs/commonfn.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                format: 'dd-M-yyyy',
+                todayHighlight: true,
+                autoclose: true
+            }); //Initialise any date pickers
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <style>
+        .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+            color: black;
+            padding: 10px;
+        }
+
+        .breakWord {
+            overflow-wrap: break-word;
+            width: 180px
+        }
+
+        .tblBreakWord {
+            width: 100%;
+            word-wrap: break-word;
+            table-layout: fixed;
+        }
+
+        .tableTextTruncate.text {
+            max-width: 177px;
+        }
+
+            .tableTextTruncate.text span {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: inline-block;
+                max-width: 100%;
+            }
+
+        .changeCursorToPointer {
+            cursor: pointer;
+        }
+
+        .brand-style {
+            font-size: 18px;
+            color: white;
+            line-height: 50px;
+            text-decoration: none;
+        }
+
+            .brand-style:hover {
+                color: white;
+                text-decoration: none;
+            }
+
+            .brand-style span {
+                margin-right: 10px;
+            }
+
+        .progress {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            height: 100vh;
+            width: 100%;
+            background-color: white;
+            opacity: .5;
+        }
+
+            .progress > svg {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+        #loading-section {
+            display: none;
+        }
+
+        /*Custom Grid*/
+        .datepicker.dropdown-menu {
+            z-index: 9999 !important;
+        }
+
+        .hoverEff {
+            cursor: pointer;
+        }
+
+            .hoverEff:hover {
+                background-color: rgb(248, 242, 242);
+            }
+
+        .expand2 {
+            background-image: url(/Content/Images/plus.png);
+            background-position-x: -22px;
+            background-repeat: no-repeat;
+        }
+
+        .collapse2 {
+            background-image: url(/Content/Images/plus.png);
+            background-position-x: -2px;
+            background-repeat: no-repeat;
+        }
+    </style>
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    @await Component.InvokeAsync("Notyf")
+</body>
+</html>

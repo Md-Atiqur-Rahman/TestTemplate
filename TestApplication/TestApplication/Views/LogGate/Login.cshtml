@@ -1,0 +1,85 @@
+﻿@model TestSelise.Models.Models.User
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h4>Login</h4>
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                <div class="form-group">
+                    <label asp-for="EMail" class="control-label"></label>
+                    <input asp-for="EMail" class="form-control" />
+                    <span asp-validation-for="EMail" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" type="password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-success" />
+                </div>
+                <div>
+                    <a asp-action="Register">Register</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/sweetalert-helper.js"></script>
+    <script src="~/js/sweetalert2.js"></script>
+
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+
+    @section scripts{
+
+        <script>
+            $(document).ready(function () {
+                $('.left-side').removeAttr('style');
+                $('.right-side').removeAttr('style');
+            });
+
+            function fnShowPassword() {
+                $("#showEye").removeClass('fa fa-eye-slash').addClass('fa fa-eye')
+                if ($("#Password").attr('type') == "password") {
+                    $("#Password").attr('type', 'text');
+                } else {
+                    $("#showEye").removeClass('fa fa-eye').addClass('fa fa-eye-slash')
+                    $("#Password").attr('type', 'password');
+                }
+
+            }
+
+        </script>
+    }
+</body>
+</html>
+
+

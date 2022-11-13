@@ -1,0 +1,3 @@
+
+Scaffold-DbContext "Server=DESKTOP-ICMG8LV;Database=dbTest;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -f
+

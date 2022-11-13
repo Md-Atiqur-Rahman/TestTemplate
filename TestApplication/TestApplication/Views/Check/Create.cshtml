@@ -1,0 +1,177 @@
+﻿@model TestApplication.ViewModels.PersonRelatedInfoVm
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="personalInfoForm">
+    <div class="col-md-12 no-padding">
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.HiddenFor(model => model.person.PersonId)
+            <div class=" form-horizontal">
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.person.DivisionId, "বিভাগ", new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                    <div class="col-md-9  col-sm-9 col-xs-12">
+                        @Html.DropDownListFor(model => model.person.DivisionId, Model.commonVm.DivisionsSelectListItems, "বাছাই করুন", new { @class = "form-control field-validator required-field", @required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.person.DateOfBirth, "জন্ম তারিখ", new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                    <div class="col-md-9  col-sm-9 col-xs-12">
+                        @Html.TextBoxFor(model => model.person.DateOfBirth, "{0:dd-MMM-yyyy}", new { @class = "form-control field-validator required-field datepicker", @required = "required", @onkeypress = "return false;" })
+                    </div>
+                </div>
+
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.person.PersonName, "নাম", new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                    <div class="col-md-9  col-sm-9 col-xs-12">
+                        @Html.TextBoxFor(model => model.person.PersonName, new { @class = "form-control checkTextArea field-validator required-field", @required = "required" })
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class=" form-horizontal">
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.person.Address, "ঠিকানা", new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                    <div class="col-md-9  col-sm-9 col-xs-12">
+                        @Html.TextAreaFor(model => model.person.Address, new { @class = "form-control checkTextArea field-validator required-field", @required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.person.Photo, "ছবি", new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                    <div class="col-md-9  col-sm-9 col-xs-12">
+                        <input type='file' name="UserPictureSource" id="UserPictureSource" class="breakWord image-upload UserPictureSource field-validator " onchange="readUserPictureURL(this, 'UserImage', 'UserPictureSource');" />
+                        <div id="UserImageDiv" class="img-container-div img-container-div-border">
+                            <img id="UserImage" alt="&nbsp;" src="@Model.person.Photo" style="height:120px;width:80px" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br />
+    <br />
+    <div class="col-md-12 no-padding">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class=" form-horizontal">
+                <div class="form-group required">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">সংযুক্তি আপলোড</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="file" name="file" id="Files" class="breakWord" />
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <input type="button" id="UploadBtn" class="btn btn-info form-control" value="আপলোড" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div id="dvCommUploadDetails">
+                @Html.Partial("_AttachmentList", Model.person.DocumentInfos)
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="form-group required">
+            <div class="col-md-7  col-sm-7 col-xs-12">
+            </div>
+            <div class="col-md-5  col-sm-5 col-xs-12">
+                <input type="button" id="btnPersonalInfoSave" class="btn btn-info tab-btn-save" value="সংরক্ষণ করুন" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    <a asp-action="IndexChild">Back to List</a>
+</div>
+<div class="clearfix"></div>
+<script src="~/js/jquery-3.2.1.min.js"></script>
+<script>
+    @*if (@Model.person.PersonId > 0) {
+        if (@Model.person.Photo != null) {
+            document.getElementById("UserImage").src = @Model.person.Photo;
+        }
+
+    }*@
+
+
+     $("#btnPersonalInfoSave").click(function () {
+        if (!MandatoryFieldsCheck('#personalInfoForm')) { return; }
+        var formData = new FormData($('#personalInfoForm').get(0));
+         formData.append("file", $("#UserPictureSource")[0].files[0]);
+        //$("#btnPersonalInfoSave").attr('disabled', true);
+        $.ajax({
+            url: '@Url.Action("Create", "Check")',
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: (function (result) {
+                if (result == "সফল হয়নি") {
+                    alertWarning("সংরক্ষণ ব্যর্থ", "");
+                    //$("#btnPersonalInfoSave").attr('disabled', false);
+
+                }
+                else {
+                    alertSuccess("সংরক্ষণ সম্পন্ন হয়েছে", "");
+                }
+            }),
+            error: (function (result) {
+                alertWarning("সফল হয়নি", "");
+                //$("#btnPersonalInfoSave").attr('disabled', false);
+            }),
+        });
+     });
+
+    // upload block
+    var Allfiles = new FormData();
+
+    $('#UploadBtn').click(function () {
+        var formData = new FormData();
+        formData.append("file", $("#Files")[0].files[0]);
+        $.ajax({
+            url: '@Url.Action("UploadFiles")',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: formData,
+            async: false,
+            success: function (result) {
+
+                $("#dvCommUploadDetails").empty();
+                $("#dvCommUploadDetails").html(result);
+
+            },
+            error: function (err) {
+                alert(err.statusText);
+            }
+        });
+
+    });
+
+    function removeAttachment(name) {
+        alert(name);
+        $("#dvCommUploadDetails").empty();
+        $.ajax({
+            url: '@Url.Action("RemoveAttachment", "Check")',
+            type: "GET",
+            data: {
+                name: name,
+            },
+            success: (function (result) {
+                $("#dvCommUploadDetails").html(result);
+            }),
+            error: (function (result) {
+                alertWarning("Load failed", "");
+            }),
+        });
+    }
+</script>

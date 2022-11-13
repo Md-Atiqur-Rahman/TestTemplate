@@ -1,0 +1,15 @@
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\bin\Debug\net5.0\TestSelise.Entities.deps.json
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\bin\Debug\net5.0\TestSelise.Entities.runtimeconfig.json
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\bin\Debug\net5.0\TestSelise.Entities.runtimeconfig.dev.json
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\bin\Debug\net5.0\TestSelise.Entities.dll
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\bin\Debug\net5.0\ref\TestSelise.Entities.dll
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\bin\Debug\net5.0\TestSelise.Entities.pdb
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\obj\Debug\net5.0\TestSelise.Entities.csproj.AssemblyReference.cache
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\obj\Debug\net5.0\TestSelise.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\obj\Debug\net5.0\TestSelise.Entities.AssemblyInfoInputs.cache
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\obj\Debug\net5.0\TestSelise.Entities.AssemblyInfo.cs
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\obj\Debug\net5.0\TestSelise.Entities.csproj.CoreCompileInputs.cache
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\obj\Debug\net5.0\TestSelise.Entities.dll
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\obj\Debug\net5.0\ref\TestSelise.Entities.dll
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\obj\Debug\net5.0\TestSelise.Entities.pdb
+D:\2022_Selise\TestSeliseApi\TestSelise.Entities\obj\Debug\net5.0\TestSelise.Entities.genruntimeconfig.cache

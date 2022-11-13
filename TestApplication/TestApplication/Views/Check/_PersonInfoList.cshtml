@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TestSelise.Models.Models.PersonVm>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Address</th>
+            <th></th>
+        </tr>
+        
+        <tr>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+            <td>@item.PersonName</td>
+            <td>@item.Address</td>
+            <td>
+                @Html.ActionLink("Edit", "Create", new { id=item.PersonId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PersonId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PersonId })
+            </td>
+            
+            </tr>
+
+        }
+    </tbody>
+</table>

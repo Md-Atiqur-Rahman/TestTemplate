@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
+    <PackageReference Include="bootstrap" Version="4.1.0" />
+    <PackageReference Include="font-awesome" Version="4.7.0" />
+    <PackageReference Include="Font.Awesome" Version="4.4.0" />
+    <PackageReference Include="jQuery" Version="3.1.0" />
+    <PackageReference Include="jQuery.Validation" Version="1.13.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="SweetAlert" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="TestSelise.Data">
+      <HintPath>..\..\TestSelise.Dll\TestSelise.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="TestSelise.Models">
+      <HintPath>..\..\TestSelise.Dll\TestSelise.Models.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
